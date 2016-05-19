@@ -35,4 +35,16 @@ angular.module('todoController', [])
 			}
 		};
 
+// Delete
+$scope.deleteTodo = function(id) {
+$scope.loading = true;
+
+Todos.delete(id)
+
+//if it's succesful creation, then call the get function to get all the new todos
+.success(function(data) {
+$scope.loading = false;
+$scope.todos = data;
+});
+};
 	}]);
